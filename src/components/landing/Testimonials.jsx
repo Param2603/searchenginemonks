@@ -74,7 +74,6 @@ export default function Testimonials() {
       aria-labelledby="testimonials-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,8 +92,8 @@ export default function Testimonials() {
             <span className="text-orange-600">Businesses Across Canada</span>
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
-            Don&apos;t just take our word for it — hear from the businesses
-            we&apos;ve helped grow.
+            Don't just take our word for it — hear from the businesses
+            we've helped grow.
           </p>
         </motion.div>
 
@@ -111,7 +110,6 @@ export default function Testimonials() {
                 className="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col"
               >
                 <Quote className="w-8 h-8 text-orange-200 mb-4" />
-                {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
                     <Star

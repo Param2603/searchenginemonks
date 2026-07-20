@@ -96,7 +96,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Visual */}
+          {/* Right Visual - Dashboard Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -104,7 +104,6 @@ export default function Hero() {
             className="hidden lg:block"
           >
             <div className="relative">
-              {/* Main Dashboard Card */}
               <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-white font-semibold">Campaign Performance</h3>

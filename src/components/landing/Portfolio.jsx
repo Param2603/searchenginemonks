@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "FreshBite E-Commerce Redesign",
     category: "Website Design & SEO",
-    description: "Complete e-commerce overhaul resulting in 180% increase in online sales and 45% improvement in organic traffic within 6 months.",
+    description:
+      "Complete e-commerce overhaul resulting in 180% increase in online sales and 45% improvement in organic traffic within 6 months.",
     tags: ["Shopify", "SEO", "UI/UX"],
     gradient: "from-orange-400 to-amber-500",
     stat: "+180% Sales",
@@ -15,7 +15,8 @@ const projects = [
   {
     title: "UrbanNest Real Estate Platform",
     category: "Web Development & Branding",
-    description: "Modern property listing platform with AI-powered search, generating 3x more qualified leads for a Toronto-based real estate firm.",
+    description:
+      "Modern property listing platform with AI-powered search, generating 3x more qualified leads for a Toronto-based real estate firm.",
     tags: ["Next.js", "AI", "Branding"],
     gradient: "from-blue-500 to-cyan-500",
     stat: "3x Leads",
@@ -23,7 +24,8 @@ const projects = [
   {
     title: "HealthFirst Clinic Marketing",
     category: "Google Ads & SEO",
-    description: "Comprehensive digital marketing strategy for a healthcare startup, achieving top-3 Google rankings for 15+ high-value keywords.",
+    description:
+      "Comprehensive digital marketing strategy for a healthcare startup, achieving top-3 Google rankings for 15+ high-value keywords.",
     tags: ["Google Ads", "Local SEO", "Content"],
     gradient: "from-green-500 to-emerald-500",
     stat: "Top-3 Ranking",
@@ -31,7 +33,8 @@ const projects = [
   {
     title: "StyleHub Fashion Brand",
     category: "Social Media & Meta Ads",
-    description: "Full-funnel social media campaign across Instagram and Facebook, driving 250% increase in brand awareness and 120% ROAS.",
+    description:
+      "Full-funnel social media campaign across Instagram and Facebook, driving 250% increase in brand awareness and 120% ROAS.",
     tags: ["Meta Ads", "Content", "Strategy"],
     gradient: "from-pink-500 to-rose-500",
     stat: "120% ROAS",
@@ -39,7 +42,8 @@ const projects = [
   {
     title: "TechFlow SaaS Landing Page",
     category: "Website Design & Content",
-    description: "High-converting landing page for a B2B SaaS startup, improving trial signups by 220% with A/B tested copy and design.",
+    description:
+      "High-converting landing page for a B2B SaaS startup, improving trial signups by 220% with A/B tested copy and design.",
     tags: ["React", "Copywriting", "CRO"],
     gradient: "from-violet-500 to-purple-500",
     stat: "+220% Signups",
@@ -47,7 +51,8 @@ const projects = [
   {
     title: "GreenLeaf Cannabis Retail",
     category: "Full Digital Marketing",
-    description: "End-to-end digital presence for a Canadian cannabis retailer — from branding to Google Ads, driving 400% revenue growth in one year.",
+    description:
+      "End-to-end digital presence for a Canadian cannabis retailer — from branding to Google Ads, driving 400% revenue growth in one year.",
     tags: ["Branding", "Ads", "SEO"],
     gradient: "from-emerald-500 to-teal-500",
     stat: "+400% Revenue",
@@ -62,7 +67,6 @@ export default function Portfolio() {
       aria-labelledby="portfolio-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,12 +85,11 @@ export default function Portfolio() {
             <span className="text-orange-600">Real Businesses</span>
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
-            Explore our latest projects and see how we&apos;ve helped businesses
+            Explore our latest projects and see how we've helped businesses
             across Canada achieve remarkable digital growth.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <motion.article
@@ -98,12 +101,16 @@ export default function Portfolio() {
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 hover:border-orange-200 transition-all duration-300"
             >
               {/* Card Visual Header */}
-              <div className={`relative h-48 bg-gradient-to-br ${project.gradient} p-6 flex flex-col justify-between`}>
+              <div
+                className={`relative h-48 bg-gradient-to-br ${project.gradient} p-6 flex flex-col justify-between`}
+              >
                 <span className="self-start px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">
                   {project.category}
                 </span>
                 <div className="self-end bg-white rounded-xl shadow-lg px-4 py-2">
-                  <p className="text-lg font-extrabold text-gray-900">{project.stat}</p>
+                  <p className="text-lg font-extrabold text-gray-900">
+                    {project.stat}
+                  </p>
                 </div>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
               </div>

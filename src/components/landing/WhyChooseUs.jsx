@@ -20,7 +20,7 @@ const reasons = [
     icon: DollarSign,
     title: "Affordable Solutions",
     description:
-      "Premium digital marketing doesn’t have to break the bank. We offer flexible pricing packages designed for small businesses, startups, and growing brands across Canada.",
+      "Premium digital marketing doesn't have to break the bank. We offer flexible pricing packages designed for small businesses, startups, and growing brands across Canada.",
   },
   {
     icon: Brain,
@@ -32,13 +32,13 @@ const reasons = [
     icon: HeadphonesIcon,
     title: "Dedicated Support",
     description:
-      "You’re never left in the dark. Every client gets a dedicated account manager, weekly progress reports, and 24/7 access to our support team. We’re your growth partners.",
+      "You're never left in the dark. Every client gets a dedicated account manager, weekly progress reports, and 24/7 access to our support team. We're your growth partners.",
   },
   {
     icon: ShieldCheck,
     title: "Proven Track Record",
     description:
-      "With 200+ projects delivered and a 98% client retention rate, our results speak for themselves. We’ve helped businesses across Canada grow their online presence and revenue.",
+      "With 200+ projects delivered and a 98% client retention rate, our results speak for themselves. We've helped businesses across Canada grow their online presence and revenue.",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
               <span className="text-orange-600">Search Engine Monks</span>
             </h2>
             <p className="text-lg text-gray-500 leading-relaxed mb-8">
-              We don’t just deliver services — we deliver growth. Our holistic approach
+              We don't just deliver services — we deliver growth. Our holistic approach
               combines cutting-edge technology with proven marketing strategies
               to help your business thrive in the digital landscape.
             </p>

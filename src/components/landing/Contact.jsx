@@ -16,13 +16,11 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (
       !formData.name ||
@@ -35,7 +33,6 @@ export default function Contact() {
       return;
     }
     setLoading(true);
-    // Simulate API call
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
@@ -50,7 +47,6 @@ export default function Contact() {
       aria-labelledby="contact-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +65,7 @@ export default function Contact() {
             <span className="text-orange-600">Grow Your Business?</span>
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
-            Book a free consultation and let&apos;s discuss how we can help you
+            Book a free consultation and let's discuss how we can help you
             achieve your digital marketing goals.
           </p>
         </motion.div>
@@ -85,7 +81,7 @@ export default function Contact() {
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Let&apos;s Start a Conversation
+                Let's Start a Conversation
               </h3>
               <p className="text-gray-500 leading-relaxed">
                 Fill out the form and one of our digital marketing experts will
@@ -129,16 +125,19 @@ export default function Contact() {
                 Trusted By
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Google Partner", "Meta Partner", "Shopify Expert", "HubSpot Certified"].map(
-                  (badge) => (
-                    <span
-                      key={badge}
-                      className="px-3 py-1.5 bg-gray-50 text-gray-600 text-xs font-medium rounded-lg"
-                    >
-                      {badge}
-                    </span>
-                  )
-                )}
+                {[
+                  "Google Partner",
+                  "Meta Partner",
+                  "Shopify Expert",
+                  "HubSpot Certified",
+                ].map((badge) => (
+                  <span
+                    key={badge}
+                    className="px-3 py-1.5 bg-gray-50 text-gray-600 text-xs font-medium rounded-lg"
+                  >
+                    {badge}
+                  </span>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -158,13 +157,19 @@ export default function Contact() {
                   Thank You!
                 </h3>
                 <p className="text-gray-500 mb-6">
-                  Your consultation request has been received. We&apos;ll reach out
+                  Your consultation request has been received. We'll reach out
                   within 24 hours.
                 </p>
                 <button
                   onClick={() => {
                     setSubmitted(false);
-                    setFormData({ name: "", email: "", phone: "", businessName: "", message: "" });
+                    setFormData({
+                      name: "",
+                      email: "",
+                      phone: "",
+                      businessName: "",
+                      message: "",
+                    });
                   }}
                   className="text-orange-600 font-semibold hover:underline"
                 >
