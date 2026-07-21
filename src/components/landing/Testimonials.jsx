@@ -20,7 +20,7 @@ export default function Testimonials() {
   const current = testimonials.slice(page * perPage, page * perPage + perPage);
 
   return (
-    <section id="testimonials" className="py-20 sm:py-28 bg-white" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="py-20 sm:py-28 bg-[#f4f7f5]" aria-labelledby="testimonials-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,11 +32,11 @@ export default function Testimonials() {
           <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-bold rounded-full mb-4 uppercase tracking-wide">
             Client Testimonials
           </span>
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4">
             Loved by{" "}
             <span className="text-[#059669]">Businesses Across Canada</span>
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-[#4a5568] leading-relaxed">
             Don't just take our word for it — hear from the businesses we've helped grow.
           </p>
         </motion.div>
@@ -67,8 +67,8 @@ export default function Testimonials() {
                     {t.initials}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900">{t.name}</p>
-                    <p className="text-xs text-gray-500">{t.role}</p>
+                    <p className="text-sm font-bold text-[#2d3748]">{t.name}</p>
+                    <p className="text-xs text-[#4a5568]">{t.role}</p>
                   </div>
                 </div>
               </motion.div>

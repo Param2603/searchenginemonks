@@ -14,7 +14,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-20 sm:py-28 bg-white" aria-labelledby="why-us-heading">
+    <section id="why-us" className="py-20 sm:py-28 bg-[#f4f7f5]" aria-labelledby="why-us-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -29,11 +29,11 @@ export default function WhyChooseUs() {
             <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-bold rounded-full mb-4 uppercase tracking-wide">
               Why Choose Us
             </span>
-            <h2 id="why-us-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+            <h2 id="why-us-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-6">
               Why Businesses Trust{" "}
               <span className="text-[#059669]">Search Engine Monks</span>
             </h2>
-            <p className="text-lg text-gray-500 leading-relaxed mb-8">
+            <p className="text-lg text-[#4a5568] leading-relaxed mb-8">
               We don't just deliver services — we deliver growth. Our holistic approach combines cutting-edge technology with proven marketing strategies to help your business thrive in the digital landscape.
             </p>
             <div className="flex items-center gap-6">
@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <p className="text-3xl font-extrabold text-[#059669]">{stat.value}</p>
-                    <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+                    <p className="text-sm text-[#4a5568] mt-1">{stat.label}</p>
                   </motion.div>
                 </div>
               ))}
@@ -67,16 +67,16 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
                 whileHover={{ x: 6, boxShadow: "0 8px 30px rgba(5,150,105,0.12)" }}
-                className="group flex gap-5 p-6 rounded-2xl border border-gray-100 hover:border-[#6ee7b7] transition-all duration-300 cursor-default"
+                className="group flex gap-5 p-6 rounded-2xl border border-[#d1fae5] hover:border-[#6ee7b7] transition-all duration-300 cursor-default"
               >
                 <div className="shrink-0 w-12 h-12 bg-[#d1fae5] rounded-xl flex items-center justify-center group-hover:bg-[#a7f3d0] transition-colors duration-200">
                   <reason.icon className="w-6 h-6 text-[#059669]" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-[#059669] transition-colors duration-200">
+                  <h3 className="text-base font-bold text-[#2d3748] mb-1.5 group-hover:text-[#059669] transition-colors duration-200">
                     {reason.title}
                   </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{reason.description}</p>
+                  <p className="text-sm text-[#4a5568] leading-relaxed">{reason.description}</p>
                 </div>
               </motion.div>
             ))}

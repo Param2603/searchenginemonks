@@ -43,7 +43,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 sm:py-28 bg-gray-50"
+      className="py-20 sm:py-28 bg-[#e6f2ec]"
       aria-labelledby="contact-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,12 +59,12 @@ export default function Contact() {
           </span>
           <h2
             id="contact-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4"
           >
             Ready to{" "}
             <span className="text-[#059669]">Grow Your Business?</span>
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-[#4a5568] leading-relaxed">
             Book a free consultation and let's discuss how we can help you
             achieve your digital marketing goals.
           </p>
@@ -80,10 +80,10 @@ export default function Contact() {
             className="lg:col-span-2 space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-[#2d3748] mb-4">
                 Let's Start a Conversation
               </h3>
-              <p className="text-gray-500 leading-relaxed">
+              <p className="text-[#4a5568] leading-relaxed">
                 Fill out the form and one of our digital marketing experts will
                 contact you within 24 hours to discuss your project requirements.
               </p>
@@ -95,8 +95,8 @@ export default function Contact() {
                   <Phone className="w-5 h-5 text-[#059669]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">Phone</p>
-                  <p className="text-sm text-gray-500">+1 (416) 555-0199</p>
+                  <p className="text-sm font-semibold text-[#2d3748]">Phone</p>
+                  <p className="text-sm text-[#4a5568]">+1 (416) 555-0199</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -104,8 +104,8 @@ export default function Contact() {
                   <Mail className="w-5 h-5 text-[#059669]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">Email</p>
-                  <p className="text-sm text-gray-500">hello@searchenginemonks.com</p>
+                  <p className="text-sm font-semibold text-[#2d3748]">Email</p>
+                  <p className="text-sm text-[#4a5568]">hello@searchenginemonks.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -113,14 +113,14 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 text-[#059669]" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">Location</p>
-                  <p className="text-sm text-gray-500">Toronto, Ontario, Canada</p>
+                  <p className="text-sm font-semibold text-[#2d3748]">Location</p>
+                  <p className="text-sm text-[#4a5568]">Toronto, Ontario, Canada</p>
                 </div>
               </div>
             </div>
 
             {/* Trust Badges */}
-            <div className="bg-white rounded-2xl p-5 border border-gray-100">
+            <div className="bg-[#f4f7f5] rounded-2xl p-5 border border-[#d1fae5]">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
                 Trusted By
               </p>
@@ -133,7 +133,7 @@ export default function Contact() {
                 ].map((badge) => (
                   <span
                     key={badge}
-                    className="px-3 py-1.5 bg-gray-50 text-gray-600 text-xs font-medium rounded-lg"
+                    className="px-3 py-1.5 bg-[#e6f2ec] text-gray-600 text-xs font-medium rounded-lg"
                   >
                     {badge}
                   </span>
@@ -151,12 +151,12 @@ export default function Contact() {
             className="lg:col-span-3"
           >
             {submitted ? (
-              <div className="bg-white rounded-2xl p-10 border border-gray-100 text-center shadow-sm">
+              <div className="bg-[#f4f7f5] rounded-2xl p-10 border border-[#d1fae5] text-center shadow-sm">
                 <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-[#2d3748] mb-2">
                   Thank You!
                 </h3>
-                <p className="text-gray-500 mb-6">
+                <p className="text-[#4a5568] mb-6">
                   Your consultation request has been received. We'll reach out
                   within 24 hours.
                 </p>
@@ -179,7 +179,7 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-5"
+                className="bg-[#f4f7f5] rounded-2xl p-8 shadow-sm border border-[#d1fae5] space-y-5"
                 noValidate
               >
                 <div className="grid sm:grid-cols-2 gap-5">
@@ -198,7 +198,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
+                      className="w-full px-4 py-3 bg-[#e6f2ec] border border-gray-200 rounded-xl text-sm text-[#2d3748] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                   <div>
@@ -216,7 +216,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@company.com"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
+                      className="w-full px-4 py-3 bg-[#e6f2ec] border border-gray-200 rounded-xl text-sm text-[#2d3748] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 (416) 555-0000"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
+                      className="w-full px-4 py-3 bg-[#e6f2ec] border border-gray-200 rounded-xl text-sm text-[#2d3748] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                   <div>
@@ -254,7 +254,7 @@ export default function Contact() {
                       value={formData.businessName}
                       onChange={handleChange}
                       placeholder="Acme Inc."
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
+                      className="w-full px-4 py-3 bg-[#e6f2ec] border border-gray-200 rounded-xl text-sm text-[#2d3748] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                 </div>
@@ -273,7 +273,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your project and goals..."
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#e6f2ec] border border-gray-200 rounded-xl text-sm text-[#2d3748] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors resize-none"
                   />
                 </div>
                 <button

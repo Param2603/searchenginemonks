@@ -56,11 +56,11 @@ export default function FAQAccordion() {
           <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-bold rounded-full mb-4 uppercase tracking-wide">
             FAQ
           </span>
-          <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+          <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4">
             Frequently Asked{" "}
             <span className="text-[#059669]">Questions</span>
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-[#4a5568] leading-relaxed max-w-2xl mx-auto">
             Everything you need to know about working with Search Engine Monks. Can't find your answer?{" "}
             <a href="#contact" className="text-[#059669] font-semibold hover:underline transition-all">Contact us</a>.
           </p>
@@ -83,7 +83,7 @@ export default function FAQAccordion() {
                   className={`w-full flex items-center justify-between gap-4 px-6 py-5 rounded-2xl text-left transition-all duration-300 border ${
                     isOpen
                       ? "bg-[#a7f3d0]/60 border-[#6ee7b7] shadow-md"
-                      : "bg-white border-gray-100 hover:border-[#6ee7b7] shadow-sm"
+                      : "bg-[#f4f7f5] border-[#d1fae5] hover:border-[#6ee7b7] shadow-sm"
                   }`}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${i}`}
@@ -109,7 +109,7 @@ export default function FAQAccordion() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-5 pt-3 text-[15px] text-gray-600 leading-relaxed bg-white/50 rounded-b-2xl -mt-2 border-l border-r border-b border-[#6ee7b7]/50">
+                      <div className="px-6 pb-5 pt-3 text-[15px] text-gray-600 leading-relaxed bg-[#f4f7f5]/50 rounded-b-2xl -mt-2 border-l border-r border-b border-[#6ee7b7]/50">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -136,7 +136,7 @@ export default function FAQAccordion() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#059669] font-bold rounded-xl hover:bg-[#f4f7f5] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-base"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#f4f7f5] text-[#059669] font-bold rounded-xl hover:bg-[#f4f7f5] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-base"
           >
             Book Free Consultation
           </a>

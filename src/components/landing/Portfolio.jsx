@@ -14,7 +14,7 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-20 sm:py-28 bg-gray-50" aria-labelledby="portfolio-heading">
+    <section id="portfolio" className="py-20 sm:py-28 bg-[#e6f2ec]" aria-labelledby="portfolio-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,11 +26,11 @@ export default function Portfolio() {
           <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-bold rounded-full mb-4 uppercase tracking-wide">
             Our Portfolio
           </span>
-          <h2 id="portfolio-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+          <h2 id="portfolio-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4">
             Real Results for{" "}
             <span className="text-[#059669]">Real Businesses</span>
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-[#4a5568] leading-relaxed">
             Explore our latest projects and see how we've helped businesses across Canada achieve remarkable digital growth.
           </p>
         </motion.div>
@@ -44,7 +44,7 @@ export default function Portfolio() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.09, duration: 0.5 }}
               whileHover={{ y: -6 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 hover:border-[#6ee7b7] transition-all duration-300"
+              className="group bg-[#f4f7f5] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-[#d1fae5] hover:border-[#6ee7b7] transition-all duration-300"
             >
               {/* Card Visual Header */}
               <div 
@@ -52,14 +52,14 @@ export default function Portfolio() {
                 style={{ backgroundImage: `url(${project.image})` }}
               >
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
-                <span className="self-start px-3 py-1 bg-white/95 text-[#059669] text-xs font-bold rounded-full z-10 shadow-sm">
+                <span className="self-start px-3 py-1 bg-[#f4f7f5]/95 text-[#059669] text-xs font-bold rounded-full z-10 shadow-sm">
                   {project.category}
                 </span>
                 <div className="flex items-end justify-between z-10">
-                  <div className="self-end bg-white rounded-xl shadow-lg px-4 py-2">
-                    <p className="text-base font-extrabold text-gray-900">{project.stat}</p>
+                  <div className="self-end bg-[#f4f7f5] rounded-xl shadow-lg px-4 py-2">
+                    <p className="text-base font-extrabold text-[#2d3748]">{project.stat}</p>
                   </div>
-                  <div className="w-8 h-8 bg-white/95 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
+                  <div className="w-8 h-8 bg-[#f4f7f5]/95 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
                     <ArrowUpRight className="w-4 h-4 text-[#059669]" />
                   </div>
                 </div>
@@ -67,10 +67,10 @@ export default function Portfolio() {
 
               {/* Card Body */}
               <div className="p-6">
-                <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-[#059669] transition-colors duration-200">
+                <h3 className="text-base font-bold text-[#2d3748] mb-2 group-hover:text-[#059669] transition-colors duration-200">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-4">{project.description}</p>
+                <p className="text-sm text-[#4a5568] leading-relaxed mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span key={tag} className="px-2.5 py-1 bg-[#d1fae5] text-[#047857] text-xs font-semibold rounded-md">

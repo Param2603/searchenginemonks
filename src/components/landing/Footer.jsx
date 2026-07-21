@@ -1,4 +1,4 @@
-﻿import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const footerLinks = {
@@ -36,22 +36,22 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300" aria-label="Site footer">
+    <footer className="bg-[#064e3b] text-emerald-100/80" aria-label="Site footer">
 
       {/* CTA Banner */}
-      <div className="bg-gradient-to-r from-[#059669] to-[#047857]">
+      <div className="bg-[#0A192F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
               Ready to Grow Your Business?
             </h3>
-            <p className="text-[#a7f3d0] text-base">
+            <p className="text-slate-300 text-base">
               Get a free consultation and custom strategy for your brand.
             </p>
           </div>
           <a
             href="#contact"
-            className="shrink-0 px-8 py-4 bg-white text-[#059669] font-extrabold rounded-xl hover:bg-[#f4f7f5] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 text-base"
+            className="shrink-0 px-8 py-4 bg-[#059669] text-white font-extrabold rounded-xl hover:bg-[#047857] transition-all duration-300 shadow-xl shadow-[#059669]/20 hover:shadow-[#059669]/40 hover:-translate-y-0.5 text-base"
           >
             Book Free Consultation
           </a>
@@ -64,22 +64,22 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="flex items-center gap-3 mb-5 group" aria-label="Search Engine Monks">
-              <img src="/logo.svg" alt="Search Engine Monks Logo" className="h-10 w-auto brightness-0 invert group-hover:opacity-90 transition-opacity" />
+            <a href="#" className="inline-flex items-center gap-3 mb-6 group bg-white/95 px-4 py-2.5 rounded-xl shadow-sm" aria-label="Search Engine Monks">
+              <img src="/logo.svg" alt="Search Engine Monks Logo" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
             </a>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6">
+            <p className="text-sm text-emerald-100/70 leading-relaxed mb-6">
               A full-service digital marketing agency helping Canadian businesses grow through innovative websites, SEO, branding, and AI-powered marketing solutions.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm hover:text-[#6ee7b7] transition-colors duration-200 cursor-pointer">
+              <div className="flex items-center gap-3 text-sm hover:text-white transition-colors duration-200 cursor-pointer">
                 <Phone className="w-4 h-4 text-[#6ee7b7]" />
                 <span>+1 (416) 555-0199</span>
               </div>
-              <div className="flex items-center gap-3 text-sm hover:text-[#6ee7b7] transition-colors duration-200 cursor-pointer">
+              <div className="flex items-center gap-3 text-sm hover:text-white transition-colors duration-200 cursor-pointer">
                 <Mail className="w-4 h-4 text-[#6ee7b7]" />
                 <span>hello@searchenginemonks.com</span>
               </div>
-              <div className="flex items-center gap-3 text-sm hover:text-[#6ee7b7] transition-colors duration-200 cursor-pointer">
+              <div className="flex items-center gap-3 text-sm hover:text-white transition-colors duration-200 cursor-pointer">
                 <MapPin className="w-4 h-4 text-[#6ee7b7]" />
                 <span>Toronto, Ontario, Canada</span>
               </div>
@@ -92,7 +92,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.services.map((service) => (
                 <li key={service}>
-                  <a href="#services" className="text-sm text-gray-400 hover:text-[#6ee7b7] transition-colors duration-200">
+                  <a href="#services" className="text-sm text-emerald-100/70 hover:text-white transition-colors duration-200">
                     {service}
                   </a>
                 </li>
@@ -106,7 +106,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-gray-400 hover:text-[#6ee7b7] transition-colors duration-200">
+                  <a href={link.href} className="text-sm text-emerald-100/70 hover:text-white transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -120,7 +120,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.support.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-gray-400 hover:text-[#6ee7b7] transition-colors duration-200">
+                  <a href={link.href} className="text-sm text-emerald-100/70 hover:text-white transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -132,7 +132,7 @@ export default function Footer() {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-9 h-9 bg-gray-800 hover:bg-[#059669] rounded-lg flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+                  className="w-9 h-9 bg-[#047857] hover:bg-[#0A192F] text-white rounded-lg flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <s.icon className="w-4 h-4" />
                 </a>
@@ -143,15 +143,15 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <div className="border-t border-[#047857]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-emerald-100/60">
           <p>&copy; {new Date().getFullYear()} Search Engine Monks. All rights reserved.</p>
           <a
             href="#hero"
-            className="p-2.5 bg-gray-800 hover:bg-[#059669] rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+            className="p-2.5 bg-[#047857] hover:bg-[#0A192F] text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
             aria-label="Back to top"
           >
-            <ArrowUp className="w-4 h-4 text-gray-300" />
+            <ArrowUp className="w-4 h-4" />
           </a>
         </div>
       </div>

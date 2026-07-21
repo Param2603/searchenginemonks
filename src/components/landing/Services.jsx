@@ -21,7 +21,7 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 sm:py-28 bg-gray-50" aria-labelledby="services-heading">
+    <section id="services" className="py-20 sm:py-28 bg-[#e6f2ec]" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,11 +33,11 @@ export default function Services() {
           <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-bold rounded-full mb-4 tracking-wide uppercase">
             Our Services
           </span>
-          <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+          <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4">
             Everything You Need to{" "}
             <span className="text-[#059669]">Dominate Online</span>
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-[#4a5568] leading-relaxed">
             From website design to AI-powered marketing automation, we provide end-to-end digital solutions that drive real business growth.
           </p>
         </motion.div>
@@ -52,7 +52,7 @@ export default function Services() {
               whileInView="visible"
               viewport={{ once: true }}
               whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(5,150,105,0.15)" }}
-              className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:border-[#6ee7b7] transition-all duration-300 cursor-default"
+              className="group bg-[#f4f7f5] rounded-2xl p-6 shadow-sm border border-[#d1fae5] hover:border-[#6ee7b7] transition-all duration-300 cursor-default"
             >
               <motion.div
                 className={`w-14 h-14 ${service.bg} rounded-xl flex items-center justify-center mb-5`}
@@ -61,10 +61,10 @@ export default function Services() {
               >
                 <service.icon className={`w-7 h-7 ${service.color}`} />
               </motion.div>
-              <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-[#059669] transition-colors duration-200">
+              <h3 className="text-base font-bold text-[#2d3748] mb-2 group-hover:text-[#059669] transition-colors duration-200">
                 {service.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+              <p className="text-sm text-[#4a5568] leading-relaxed">{service.description}</p>
               <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-[#059669] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Learn more <span className="ml-0.5">→</span>
               </div>
