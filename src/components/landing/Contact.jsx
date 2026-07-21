@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -54,7 +54,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full mb-4">
+          <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-semibold rounded-full mb-4">
             Get In Touch
           </span>
           <h2
@@ -62,7 +62,7 @@ export default function Contact() {
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4"
           >
             Ready to{" "}
-            <span className="text-orange-600">Grow Your Business?</span>
+            <span className="text-[#059669]">Grow Your Business?</span>
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
             Book a free consultation and let's discuss how we can help you
@@ -91,8 +91,8 @@ export default function Contact() {
 
             <div className="space-y-5">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-orange-600" />
+                <div className="w-11 h-11 bg-[#d1fae5] rounded-xl flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-[#059669]" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Phone</p>
@@ -100,8 +100,8 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-orange-600" />
+                <div className="w-11 h-11 bg-[#d1fae5] rounded-xl flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5 text-[#059669]" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Email</p>
@@ -109,8 +109,8 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-orange-600" />
+                <div className="w-11 h-11 bg-[#d1fae5] rounded-xl flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-[#059669]" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Location</p>
@@ -171,7 +171,7 @@ export default function Contact() {
                       message: "",
                     });
                   }}
-                  className="text-orange-600 font-semibold hover:underline"
+                  className="text-[#059669] font-semibold hover:underline"
                 >
                   Submit another inquiry
                 </button>
@@ -198,7 +198,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 transition-colors"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                   <div>
@@ -216,7 +216,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@company.com"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 transition-colors"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 (416) 555-0000"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 transition-colors"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                   <div>
@@ -254,7 +254,7 @@ export default function Contact() {
                       value={formData.businessName}
                       onChange={handleChange}
                       placeholder="Acme Inc."
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 transition-colors"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors"
                     />
                   </div>
                 </div>
@@ -273,13 +273,13 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your project and goals..."
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] transition-colors resize-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#059669] to-[#047857] text-white font-semibold rounded-xl hover:from-[#047857] hover:to-[#064e3b] transition-all shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>

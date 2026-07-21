@@ -1,83 +1,47 @@
 "use client";
 
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { SiGoogle } from "react-icons/si";
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#" },
   { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },  
+  { label: "Why Us", href: "#why-us" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/97 backdrop-blur-md border-b border-[#a7f3d0]/60 shadow-md"
+          : "bg-white/90 backdrop-blur-sm border-b border-gray-100"
+      }`}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo Section */}
+        <div className="flex items-center justify-between h-20 lg:h-24">
+
+          {/* Logo */}
           <a href="#" className="flex items-center gap-3 group" aria-label="Search Engine Monks Home">
-            <div className="flex items-center gap-3">
-              {/* Complex SVG Logo */}
-              <div className="w-12 h-12 flex items-center justify-center">
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 100 100"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full h-full"
-                >
-                  {/* Intricate Circular Wreath/Filigree (Matches Screenshot pattern) */}
-                  <path
-                    d="M 50 10 C 27.91 10 10 27.91 10 50 C 10 72.09 27.91 90 50 90 C 72.09 90 90 72.09 90 50 C 90 27.91 72.09 10 50 10 Z M 50 15 C 69.33 15 85 30.67 85 50 C 85 69.33 69.33 85 50 85 C 30.67 85 15 69.33 15 50 C 15 30.67 30.67 15 50 15 Z"
-                    fill="none"
-                    stroke="#a0b8a0"
-                    strokeWidth="1.5"
-                    strokeDasharray="4,2"
-                  />
-                  {/* Detailed stylized Filigree details (simplified for SVG, but complex) */}
-                  <path
-                    d="M 50 12 A 38 38 0 0 1 88 50 M 50 88 A 38 38 0 0 1 12 50 M 12 50 A 38 38 0 0 1 50 12 M 88 50 A 38 38 0 0 1 50 88"
-                    fill="none"
-                    stroke="#8c9e8c"
-                    strokeWidth="1"
-                    strokeDasharray="2,3"
-                  />
-
-                  {/* Cartoon Buddha Monk (Matches Screenshot details) */}
-                  <g transform="translate(32, 28) scale(0.38)">
-                    {/* Head and Face */}
-                    <circle cx="50" cy="35" r="22" fill="#ffe0bd" />
-                    <circle cx="50" cy="35" r="22" fill="none" stroke="#e0ac80" strokeWidth="1" />
-                    <circle cx="43" cy="32" r="2" fill="#5c4033" />
-                    <circle cx="57" cy="32" r="2" fill="#5c4033" />
-                    <path d="M 46 42 Q 50 45 54 42" fill="none" stroke="#5c4033" strokeWidth="1" />
-                    <path d="M 49 48 Q 50 51 51 48" fill="none" stroke="#5c4033" strokeWidth="1" />
-                    {/* Body/Robes */}
-                    <path d="M 35 55 L 65 55 L 60 85 L 40 85 Z" fill="#d37d6e" />
-                    <path d="M 35 55 L 65 55 L 60 85 L 40 85 Z" fill="none" stroke="#b06456" strokeWidth="1" />
-                    <path d="M 42 55 L 58 55" stroke="#b06456" strokeWidth="1.5" />
-                    {/* Hands */}
-                    <ellipse cx="38" cy="62" rx="4" ry="7" fill="#ffe0bd" />
-                    <ellipse cx="62" cy="62" rx="4" ry="7" fill="#ffe0bd" />
-                  </g>
-                </svg>
-              </div>
-
-              {/* Text: Search Engine Monks */}
-              <div className="flex flex-col leading-tight">
-                <span className="text-xl font-bold text-[#3a5a40] tracking-tight">
-                  Search Engine Monks
-                </span>
-              </div>
-            </div>
+            <img
+              src="/logo.svg"
+              alt="Search Engine Monks Logo"
+              className="h-14 lg:h-[4.5rem] w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -86,9 +50,10 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#d37d6e] hover:bg-[#d37d6e]/10 transition-colors"
+                className="relative px-3 py-2 text-sm font-semibold text-[#4a4a48] hover:text-[#059669] transition-colors duration-200 rounded-lg hover:bg-[#d1fae5]/60 group"
               >
                 {link.label}
+                <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#059669] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
               </a>
             ))}
           </div>
@@ -97,17 +62,17 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#3a5a40] text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-all shadow-md hover:shadow-lg"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#059669] text-white text-sm font-bold rounded-xl hover:bg-[#047857] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              <SiGoogle className="w-4 h-4" />
-              Free Consultation
+              Get a Free Quote
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-gray-600 hover:text-[#3a5a40] rounded-lg hover:bg-[#3a5a40]/10 transition-colors"
+            className="lg:hidden p-2 text-[#4a4a48] hover:text-[#059669] rounded-lg hover:bg-[#d1fae5] transition-colors duration-200"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
@@ -123,26 +88,34 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="lg:hidden bg-white border-t border-[#a7f3d0]/60 overflow-hidden shadow-lg"
           >
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link) => (
-                <a
+            <div className="px-4 py-5 space-y-1">
+              {navLinks.map((link, i) => (
+                <motion.a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-sm font-medium text-gray-600 hover:text-[#3a5a40] hover:bg-[#3a5a40]/10 rounded-lg transition-colors"
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="block px-4 py-3 text-sm font-semibold text-[#4a4a48] hover:text-[#059669] hover:bg-[#d1fae5]/60 rounded-xl transition-colors duration-200"
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
-              <a
+              <motion.a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                className="block mt-3 text-center px-5 py-3 bg-[#3a5a40] text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className="flex items-center justify-center gap-2 mt-4 px-5 py-3.5 bg-[#059669] text-white text-sm font-bold rounded-xl hover:bg-[#047857] transition-all duration-300"
               >
-                Book Free Consultation
-              </a>
+                Get a Free Quote
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
             </div>
           </motion.div>
         )}
