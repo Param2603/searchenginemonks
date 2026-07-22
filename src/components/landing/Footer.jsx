@@ -64,8 +64,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="inline-flex items-center gap-3 mb-6 group bg-white/95 px-4 py-2.5 rounded-xl shadow-sm" aria-label="Search Engine Monks">
-              <img src="/logo.svg" alt="Search Engine Monks Logo" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <a href="#" className="inline-flex items-center gap-3 mb-6 group" aria-label="Search Engine Monks">
+              <img src="/logo-white-text.png" alt="Search Engine Monks Logo" className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
             </a>
             <p className="text-sm text-emerald-100/70 leading-relaxed mb-6">
               A full-service digital marketing agency helping Canadian businesses grow through innovative websites, SEO, branding, and AI-powered marketing solutions.

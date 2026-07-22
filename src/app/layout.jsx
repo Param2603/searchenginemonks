@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Quicksand } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import SplashScreen from "@/components/ui/SplashScreen";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -148,6 +149,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} antialiased bg-background text-foreground`}
       >
+        <SplashScreen />
         {children}
         <Toaster />
         <SonnerToaster position="bottom-right" richColors />

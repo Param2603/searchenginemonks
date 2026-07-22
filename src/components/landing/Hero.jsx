@@ -1,7 +1,8 @@
 "use client";
 
 import { ArrowRight, Star, Shield, Award, Users, TrendingUp, CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect } from "react";
 
 const trustBadges = [
   { icon: Shield, label: "Google Partner" },
@@ -11,6 +12,36 @@ const trustBadges = [
 ];
 
 export default function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      const x = (clientX / innerWidth - 0.5) * 2;
+      const y = (clientY / innerHeight - 0.5) * 2;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const layer1X = useTransform(smoothX, [-1, 1], [-15, 15]);
+  const layer1Y = useTransform(smoothY, [-1, 1], [-15, 15]);
+
+  const layer2X = useTransform(smoothX, [-1, 1], [-25, 25]);
+  const layer2Y = useTransform(smoothY, [-1, 1], [-25, 25]);
+
+  const layer3X = useTransform(smoothX, [-1, 1], [-45, 45]);
+  const layer3Y = useTransform(smoothY, [-1, 1], [-45, 45]);
+
   return (
     <section
       id="hero"
@@ -133,74 +164,79 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             className="flex justify-center items-center relative min-h-[380px] lg:min-h-[480px] mt-12 lg:mt-0"
           >
-            <motion.div
-              className="absolute w-[280px] h-[280px] lg:w-[380px] lg:h-[380px] rounded-full bg-white/50 blur-2xl"
-              animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute w-[320px] h-[320px] lg:w-[430px] lg:h-[430px] rounded-full border-2 border-[#6ee7b7]/30"
-              animate={{ scale: [1, 1.06, 1], opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-            {/* 3 Massive Orange Rings for high visibility behind the head */}
-            {/* Inner dashed ring */}
-            <motion.div
-              className="absolute w-[340px] h-[340px] lg:w-[480px] lg:h-[480px] -translate-y-[20px] rounded-full border-[3px] border-dashed border-[#fb923c]/90 shadow-[0_0_25px_rgba(251,146,60,0.4)]"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            />
-            {/* Middle dotted/solid thin ring */}
-            <motion.div
-              className="absolute w-[380px] h-[380px] lg:w-[540px] lg:h-[540px] -translate-y-[20px] rounded-full border-2 border-dotted border-[#fb923c]/70"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-            />
-            {/* Outer faint dashed ring */}
-            <motion.div
-              className="absolute w-[420px] h-[420px] lg:w-[600px] lg:h-[600px] -translate-y-[20px] rounded-full border border-dashed border-[#fb923c]/50"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="absolute w-[240px] h-[240px] lg:w-[330px] lg:h-[330px] rounded-full border border-[#059669]/20"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            />
-
-            <motion.img
-              src="/buddha.svg"
-              alt="Search Engine Monks meditating Buddha mascot"
-              loading="eager"
-              className="relative w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[420px] drop-shadow-2xl z-10 select-none"
-              animate={{ y: [0, -18, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-              whileHover={{ scale: 1.07 }}
-              className="absolute top-4 right-0 lg:top-8 lg:-right-2 bg-white rounded-2xl shadow-xl p-3 lg:p-4 flex items-center gap-2.5 lg:gap-3 z-20 border border-gray-100 cursor-default"
-            >
-              <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#d1fae5] rounded-xl flex items-center justify-center shrink-0">
-                <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-[#059669]" />
-              </div>
-              <div>
-                <p className="text-[10px] lg:text-xs text-[#6b6b68] font-medium">Average ROI</p>
-                <p className="text-sm lg:text-lg font-extrabold text-[#2d2d2b]">+340%</p>
-              </div>
+            {/* Layer 1: Background Elements (Slow Parallax) */}
+            <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <motion.div
+                className="absolute w-[280px] h-[280px] lg:w-[380px] lg:h-[380px] rounded-full bg-white/50 blur-2xl"
+                animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute w-[320px] h-[320px] lg:w-[430px] lg:h-[430px] rounded-full border-2 border-[#6ee7b7]/30"
+                animate={{ scale: [1, 1.06, 1], opacity: [0.3, 0.7, 0.3] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* 3 Massive Orange Rings for high visibility behind the head */}
+              <motion.div
+                className="absolute w-[340px] h-[340px] lg:w-[480px] lg:h-[480px] -translate-y-[20px] rounded-full border-[3px] border-dashed border-[#fb923c]/90 shadow-[0_0_25px_rgba(251,146,60,0.4)]"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute w-[380px] h-[380px] lg:w-[540px] lg:h-[540px] -translate-y-[20px] rounded-full border-2 border-dotted border-[#fb923c]/70"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute w-[420px] h-[420px] lg:w-[600px] lg:h-[600px] -translate-y-[20px] rounded-full border border-dashed border-[#fb923c]/50"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute w-[240px] h-[240px] lg:w-[330px] lg:h-[330px] rounded-full border border-[#059669]/20"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              />
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-              whileHover={{ scale: 1.07 }}
-              className="absolute bottom-10 left-0 lg:bottom-14 lg:-left-2 bg-white rounded-2xl shadow-xl p-3 lg:p-4 flex items-center gap-2.5 lg:gap-3 z-20 border border-gray-100 cursor-default"
-            >
-              <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#fff8e6] rounded-xl flex items-center justify-center shrink-0">
+            {/* Layer 2: Buddha Image (Medium Parallax) */}
+            <motion.div style={{ x: layer2X, y: layer2Y }} className="relative z-10 w-full flex justify-center pointer-events-none">
+              <motion.img
+                src="/buddha.svg"
+                alt="Search Engine Monks meditating Buddha mascot"
+                loading="eager"
+                className="w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[420px] drop-shadow-2xl select-none"
+                animate={{ y: [0, -18, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+
+            {/* Layer 3: Floating Cards (Fast Parallax) */}
+            <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute inset-0 pointer-events-none z-20">
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+                whileHover={{ scale: 1.07 }}
+                className="absolute top-4 right-0 lg:top-8 lg:-right-2 bg-white rounded-2xl shadow-xl p-3 lg:p-4 flex items-center gap-2.5 lg:gap-3 border border-gray-100 pointer-events-auto cursor-default"
+              >
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#d1fae5] rounded-xl flex items-center justify-center shrink-0">
+                  <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-[#059669]" />
+                </div>
+                <div>
+                  <p className="text-[10px] lg:text-xs text-[#6b6b68] font-medium">Average ROI</p>
+                  <p className="text-sm lg:text-lg font-extrabold text-[#2d2d2b]">+340%</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+                whileHover={{ scale: 1.07 }}
+                className="absolute bottom-10 left-0 lg:bottom-14 lg:-left-2 bg-white rounded-2xl shadow-xl p-3 lg:p-4 flex items-center gap-2.5 lg:gap-3 border border-gray-100 pointer-events-auto cursor-default"
+              >
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#fff8e6] rounded-xl flex items-center justify-center shrink-0">
                 <Star className="w-4 h-4 lg:w-5 lg:h-5 text-amber-500 fill-amber-500" />
               </div>
               <div>
@@ -208,6 +244,7 @@ export default function Hero() {
                 <p className="text-sm lg:text-lg font-extrabold text-[#2d2d2b]">4.9 / 5.0</p>
               </div>
             </motion.div>
+          </motion.div>
           </motion.div>
         </div>
 
