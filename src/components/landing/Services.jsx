@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import { Globe, Search, Share2, Megaphone, Target, Palette, Brain, FileText } from "lucide-react";
@@ -52,20 +52,22 @@ export default function Services() {
               whileInView="visible"
               viewport={{ once: true }}
               whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(5,150,105,0.15)" }}
-              className="group bg-[#f4f7f5] rounded-2xl p-6 shadow-sm border border-[#d1fae5] hover:border-[#6ee7b7] transition-all duration-300 cursor-default"
+              whileTap={{ y: -6, boxShadow: "0 20px 40px rgba(5,150,105,0.15)" }}
+              className="group bg-[#f4f7f5] rounded-2xl p-6 shadow-sm border border-[#d1fae5] hover:border-[#6ee7b7] active:border-[#6ee7b7] transition-all duration-300 cursor-pointer"
             >
               <motion.div
                 className={`w-14 h-14 ${service.bg} rounded-xl flex items-center justify-center mb-5`}
                 whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <service.icon className={`w-7 h-7 ${service.color}`} />
               </motion.div>
-              <h3 className="text-base font-bold text-[#2d3748] mb-2 group-hover:text-[#059669] transition-colors duration-200">
+              <h3 className="text-base font-bold text-[#2d3748] mb-2 group-hover:text-[#059669] group-active:text-[#059669] transition-colors duration-200">
                 {service.title}
               </h3>
               <p className="text-sm text-[#4a5568] leading-relaxed">{service.description}</p>
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-[#059669] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-[#059669] opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
                 Learn more <span className="ml-0.5">→</span>
               </div>
             </motion.article>

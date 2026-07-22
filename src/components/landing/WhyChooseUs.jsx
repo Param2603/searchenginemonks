@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import { BarChart3, Lightbulb, DollarSign, Brain, HeadphonesIcon, ShieldCheck } from "lucide-react";
@@ -45,8 +45,9 @@ export default function WhyChooseUs() {
                 <div key={stat.label} className="flex items-center gap-6">
                   {i > 0 && <div className="w-px h-12 bg-gray-200" />}
                   <motion.div
-                    className="text-center"
+                    className="text-center cursor-pointer"
                     whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 1.06 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <p className="text-3xl font-extrabold text-[#059669]">{stat.value}</p>
@@ -67,13 +68,14 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
                 whileHover={{ x: 6, boxShadow: "0 8px 30px rgba(5,150,105,0.12)" }}
-                className="group flex gap-5 p-6 rounded-2xl border border-[#d1fae5] hover:border-[#6ee7b7] transition-all duration-300 cursor-default"
+                whileTap={{ x: 6, boxShadow: "0 8px 30px rgba(5,150,105,0.12)" }}
+                className="group flex gap-5 p-6 rounded-2xl border border-[#d1fae5] hover:border-[#6ee7b7] active:border-[#6ee7b7] transition-all duration-300 cursor-pointer"
               >
-                <div className="shrink-0 w-12 h-12 bg-[#d1fae5] rounded-xl flex items-center justify-center group-hover:bg-[#a7f3d0] transition-colors duration-200">
+                <div className="shrink-0 w-12 h-12 bg-[#d1fae5] rounded-xl flex items-center justify-center group-hover:bg-[#a7f3d0] group-active:bg-[#a7f3d0] transition-colors duration-200">
                   <reason.icon className="w-6 h-6 text-[#059669]" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#2d3748] mb-1.5 group-hover:text-[#059669] transition-colors duration-200">
+                  <h3 className="text-base font-bold text-[#2d3748] mb-1.5 group-hover:text-[#059669] group-active:text-[#059669] transition-colors duration-200">
                     {reason.title}
                   </h3>
                   <p className="text-sm text-[#4a5568] leading-relaxed">{reason.description}</p>
