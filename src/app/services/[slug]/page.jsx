@@ -91,7 +91,7 @@ export default async function ServicePage({ params }) {
         <ServiceStats service={clientService} />
         <ServiceFAQ service={clientService} />
         <ServiceCTA service={clientService} />
-        <RelatedServices service={service} />
+        <RelatedServices service={clientService} />
       </main>
       <Footer />
     </div>

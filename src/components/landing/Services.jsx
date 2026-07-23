@@ -22,9 +22,9 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 sm:py-32 bg-[#f4f7f5] relative overflow-hidden" aria-labelledby="services-heading">
+    <section id="services" className="py-24 sm:py-32 bg-sage-50 relative overflow-hidden" aria-labelledby="services-heading">
       {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent opacity-50" />
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-emerald-200 to-transparent opacity-50" />
       <div className="absolute -left-40 top-40 w-96 h-96 bg-emerald-100 rounded-full blur-3xl opacity-30" />
       <div className="absolute -right-40 bottom-20 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50" />
 
@@ -36,13 +36,13 @@ export default function Services() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#059669] text-sm font-bold rounded-full mb-6 tracking-widest uppercase shadow-sm border border-emerald-100">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-sage-600 text-sm font-bold rounded-full mb-6 tracking-widest uppercase shadow-sm border border-emerald-100">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Our Services
           </span>
           <h2 id="services-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e293b] tracking-tight mb-6 leading-tight">
             Everything You Need to <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#10b981]">Dominate Online</span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-sage-600 to-[#10b981]">Dominate Online</span>
           </h2>
           <p className="text-lg sm:text-xl text-[#475569] leading-relaxed">
             From custom website design to AI-powered automation, we provide end-to-end digital solutions that drive real, measurable business growth.
@@ -63,7 +63,7 @@ export default function Services() {
             >
               <Link
                 href={service.href}
-                className={`group relative flex flex-col h-full bg-white rounded-[2rem] p-8 shadow-xl shadow-gray-900/5 border border-transparent ${service.borderHover} transition-all duration-500 overflow-hidden z-10`}
+                className={`group relative flex flex-col h-full bg-white rounded-4xl p-8 shadow-xl shadow-gray-900/5 border border-transparent ${service.borderHover} transition-all duration-500 overflow-hidden z-10`}
               >
                 {/* Decorative blob expanding on hover */}
                 <div className={`absolute -right-6 -top-6 w-32 h-32 rounded-full ${service.bg} opacity-50 group-hover:opacity-100 group-hover:scale-[6] transition-all duration-700 ease-out -z-10`} />
@@ -81,7 +81,7 @@ export default function Services() {
                   {service.title}
                 </h3>
                 
-                <p className="text-[15px] text-[#475569] leading-relaxed mb-8 flex-grow">
+                <p className="text-[15px] text-[#475569] leading-relaxed mb-8 grow">
                   {service.description}
                 </p>
                 
