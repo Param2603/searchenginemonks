@@ -25,7 +25,7 @@ export default function ServiceHero({ service, icon }) {
           className="mb-8 sm:mb-12"
         >
           <Link
-            href="/#services"
+            href="/services"
             className={`group inline-flex items-center gap-2 text-sm font-bold transition-colors duration-200 ${theme.heading} hover:opacity-70`}
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />

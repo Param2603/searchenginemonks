@@ -66,8 +66,8 @@ export default function Services() {
                 className={`group relative flex flex-col h-full bg-white rounded-[2rem] p-8 shadow-xl shadow-gray-900/5 border border-transparent ${service.borderHover} transition-all duration-500 overflow-hidden z-10`}
               >
                 {/* Decorative blob expanding on hover */}
-                <div className={`absolute -right-6 -top-6 w-32 h-32 rounded-full ${service.bg} opacity-40 group-hover:scale-[3.5] transition-transform duration-700 ease-out -z-10`} />
-                <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[1px] -z-10" />
+                <div className={`absolute -right-6 -top-6 w-32 h-32 rounded-full ${service.bg} opacity-50 group-hover:opacity-100 group-hover:scale-[6] transition-all duration-700 ease-out -z-10`} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] -z-10" />
 
                 <motion.div
                   className={`relative w-16 h-16 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${service.bg} rounded-2xl flex items-center justify-center mb-6 shadow-sm overflow-hidden`}
