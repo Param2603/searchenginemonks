@@ -1,0 +1,18 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="820" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDF2F8"/>
+      <stop offset="1" stop-color="#FBCFE8"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" rx="42" fill="url(#bg)"/>
+  <rect x="70" y="80" width="760" height="460" rx="32" fill="white" stroke="#F9A8D4"/>
+  <rect x="110" y="118" width="150" height="140" rx="24" fill="#FDF2F8"/>
+  <rect x="286" y="118" width="220" height="140" rx="24" fill="#FFF1F2"/>
+  <rect x="534" y="118" width="200" height="140" rx="24" fill="#FDF2F8"/>
+  <circle cx="185" cy="188" r="38" fill="#EC4899" fill-opacity="0.22"/>
+  <rect x="110" y="290" width="624" height="180" rx="24" fill="#FFF7FB"/>
+  <path d="M154 362C188 328 227 310 268 310C309 310 344 328 378 362" stroke="#EC4899" stroke-width="10" stroke-linecap="round"/>
+  <path d="M408 362C438 334 471 320 512 320C553 320 587 334 617 362" stroke="#F472B6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M646 362C676 334 707 320 744 320C781 320 815 334 843 362" stroke="#F9A8D4" stroke-width="10" stroke-linecap="round"/>
+</svg>

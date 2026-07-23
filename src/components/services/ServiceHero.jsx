@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function ServiceHero({ service, icon }) {
   const { theme, eyebrow, h1, lede, heroStats } = service;
@@ -17,6 +18,21 @@ export default function ServiceHero({ service, icon }) {
       <div className="absolute -bottom-32 -left-24 w-80 h-80 rounded-full blur-3xl opacity-30 bg-[#a7f3d0]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 sm:mb-12"
+        >
+          <Link
+            href="/#services"
+            className={`group inline-flex items-center gap-2 text-sm font-bold transition-colors duration-200 ${theme.heading} hover:opacity-70`}
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+            Back to Services
+          </Link>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -68,14 +84,53 @@ export default function ServiceHero({ service, icon }) {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-            className="flex justify-center items-center relative"
+            className="flex justify-center items-center relative perspective-1000"
           >
-            <div className={`absolute w-72 h-72 sm:w-80 sm:h-80 rounded-full ${theme.soft} blur-2xl opacity-70`} />
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-[2.5rem] bg-white shadow-xl border border-gray-100 flex items-center justify-center">
-              <div className={`w-28 h-28 sm:w-32 sm:h-32 rounded-3xl flex items-center justify-center ${theme.iconBg}`}>
-                {icon}
+            <div className={`absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full ${theme.soft} blur-3xl opacity-70 animate-pulse`} style={{ animationDuration: '4s' }} />
+            
+            <motion.div 
+              className="relative w-full max-w-md aspect-square rounded-[2.5rem] bg-white shadow-2xl border border-gray-100 flex items-center justify-center overflow-visible z-10"
+              whileHover={{ scale: 1.02, rotateY: 5, rotateX: 5 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
+                {service.image ? (
+                  <motion.img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                    initial={{ scale: 1.2 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                  />
+                ) : (
+                  <div className={`w-full h-full flex items-center justify-center ${theme.iconBg}`}>
+                    {icon}
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent opacity-50" />
               </div>
-            </div>
+
+              {/* Parallax Floating Icon */}
+              <motion.div 
+                className={`absolute -bottom-8 -right-8 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl flex items-center justify-center shadow-xl backdrop-blur-md bg-white/90 border border-white ${theme.iconText} z-20`}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: [0, -15, 0], opacity: 1 }}
+                transition={{ 
+                  y: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+                  opacity: { delay: 0.5, duration: 0.5 }
+                }}
+              >
+                {icon}
+              </motion.div>
+
+              {/* Decorative abstract shape */}
+              <motion.div
+                className={`absolute -top-6 -left-6 w-16 h-16 rounded-full blur-xl opacity-60 ${theme.solid} z-0`}
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

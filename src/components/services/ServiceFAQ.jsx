@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function ServiceFAQ({ service }) {
   const { theme, faqs } = service;
@@ -20,7 +21,7 @@ export default function ServiceFAQ({ service }) {
           </h2>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -30,12 +31,13 @@ export default function ServiceFAQ({ service }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.4 }}
+                className={`rounded-2xl transition-all duration-300 border overflow-hidden ${
+                  isOpen ? `${theme.soft} ${theme.border} shadow-md` : "bg-white border-gray-100 hover:border-gray-200 shadow-sm"
+                }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full flex items-center justify-between gap-4 px-6 py-5 rounded-2xl text-left transition-all duration-300 border ${
-                    isOpen ? `${theme.soft} ${theme.border} shadow-md` : "bg-white border-gray-100 hover:border-gray-200 shadow-sm"
-                  }`}
+                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300"
                   aria-expanded={isOpen}
                   aria-controls={`service-faq-answer-${i}`}
                 >
@@ -56,9 +58,8 @@ export default function ServiceFAQ({ service }) {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
                     >
-                      <div className="px-6 pb-5 pt-3 text-[15px] text-gray-600 leading-relaxed">
+                      <div className="px-6 pb-6 pt-1 text-[15px] text-gray-700 leading-relaxed">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -68,6 +69,22 @@ export default function ServiceFAQ({ service }) {
             );
           })}
         </div>
+
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <Link
+            href="/#services"
+            className={`group inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-white border-2 border-transparent hover:${theme.borderHover} text-[#4a5568] hover:${theme.heading}`}
+          >
+            <ArrowLeft className={`w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1 ${theme.iconText}`} />
+            Back to All Services
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,0 +1,19 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="820" y2="580" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEF2F2"/>
+      <stop offset="1" stop-color="#FECACA"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" rx="42" fill="url(#bg)"/>
+  <rect x="70" y="80" width="760" height="460" rx="32" fill="white" stroke="#FCA5A5"/>
+  <rect x="110" y="118" width="300" height="182" rx="24" fill="#FFF1F2"/>
+  <rect x="438" y="118" width="252" height="82" rx="18" fill="#FFF1F2"/>
+  <rect x="438" y="220" width="252" height="80" rx="18" fill="#FFF1F2"/>
+  <rect x="110" y="332" width="580" height="154" rx="24" fill="#FFF7F7"/>
+  <path d="M176 205H334" stroke="#EF4444" stroke-width="12" stroke-linecap="round"/>
+  <path d="M176 238H292" stroke="#FCA5A5" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="220" cy="205" r="22" fill="#EF4444" fill-opacity="0.18"/>
+  <path d="M484 154H650" stroke="#F87171" stroke-width="12" stroke-linecap="round"/>
+  <path d="M484 256H620" stroke="#FECACA" stroke-width="10" stroke-linecap="round"/>
+</svg>
