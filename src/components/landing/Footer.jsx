@@ -3,18 +3,18 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/
 
 const footerLinks = {
   services: [
-    "Website Design & Development",
-    "SEO Services",
-    "Social Media Marketing",
-    "Google Ads",
-    "Meta Ads",
-    "Branding & Graphic Design",
-    "AI Marketing Solutions",
-    "Content Creation",
+    { label: "Website Design & Development", href: "/services/website-design-development" },
+    { label: "SEO Services", href: "/services/seo-services" },
+    { label: "Social Media Marketing", href: "/services/social-media-marketing" },
+    { label: "Google Ads", href: "/services/google-ads" },
+    { label: "Meta Ads", href: "/services/meta-ads" },
+    { label: "Branding & Graphic Design", href: "/services/branding-graphic-design" },
+    { label: "AI Marketing Solutions", href: "/services/ai-marketing-solutions" },
+    { label: "Content Creation", href: "/services/content-creation" },
   ],
   company: [
-    { label: "About Us", href: "#" },
-    { label: "Our Team", href: "#" },
+    { label: "About Us", href: "/#" },
+    { label: "Our Team", href: "/#" },
     { label: "Careers", href: "#" },
     { label: "Blog", href: "#" },
     { label: "Case Studies", href: "#portfolio" },
@@ -50,7 +50,7 @@ export default function Footer() {
             </p>
           </div>
           <a
-            href="#contact"
+            href="/#contact"
             className="shrink-0 px-8 py-4 bg-[#059669] text-white font-extrabold rounded-xl hover:bg-[#047857] transition-all duration-300 shadow-xl shadow-[#059669]/20 hover:shadow-[#059669]/40 hover:-translate-y-0.5 text-base"
           >
             Book Free Consultation
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="inline-flex items-center gap-3 mb-6 group" aria-label="Search Engine Monks">
+            <a href="/" className="inline-flex items-center gap-3 mb-6 group" aria-label="Search Engine Monks">
               <img src="/logo-white-text.png" alt="Search Engine Monks Logo" className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
             </a>
             <p className="text-sm text-emerald-100/70 leading-relaxed mb-6">
@@ -91,9 +91,9 @@ export default function Footer() {
             <h4 className="text-white font-extrabold mb-5 text-sm uppercase tracking-wider">Services</h4>
             <ul className="space-y-2.5">
               {footerLinks.services.map((service) => (
-                <li key={service}>
-                  <a href="#services" className="text-sm text-emerald-100/70 hover:text-white transition-colors duration-200">
-                    {service}
+                <li key={service.label}>
+                  <a href={service.href} className="text-sm text-emerald-100/70 hover:text-white transition-colors duration-200">
+                    {service.label}
                   </a>
                 </li>
               ))}

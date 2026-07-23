@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -39,8 +39,14 @@ const faqs = [
   },
 ];
 
-export default function FAQAccordion() {
+export default function FAQAccordion({ 
+  customFaqs, 
+  title = "Frequently Asked", 
+  highlight = "Questions",
+  subtitle = "Everything you need to know about working with Search Engine Monks. Can't find your answer?"
+}) {
   const [openIndex, setOpenIndex] = useState(null);
+  const displayFaqs = customFaqs || faqs;
 
   return (
     <section id="faq" className="py-20 sm:py-28 bg-[#f4f7f5]" aria-labelledby="faq-heading">
@@ -57,17 +63,16 @@ export default function FAQAccordion() {
             FAQ
           </span>
           <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4">
-            Frequently Asked{" "}
-            <span className="text-[#059669]">Questions</span>
+            {title} <span className="text-[#059669]">{highlight}</span>
           </h2>
           <p className="text-lg text-[#4a5568] leading-relaxed max-w-2xl mx-auto">
-            Everything you need to know about working with Search Engine Monks. Can't find your answer?{" "}
+            {subtitle}{" "}
             <a href="#contact" className="text-[#059669] font-semibold hover:underline transition-all">Contact us</a>.
           </p>
         </motion.div>
 
         <div className="space-y-3">
-          {faqs.map((faq, i) => {
+          {displayFaqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
               <motion.div
