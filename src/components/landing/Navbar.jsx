@@ -20,7 +20,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const servicesRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,23 +31,19 @@ export default function Navbar() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (servicesRef.current && !servicesRef.current.contains(event.target)) {
         setServicesDropdown(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle keyboard events
+  // Close on Escape
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        setServicesDropdown(false);
-      }
+      if (event.key === "Escape") setServicesDropdown(false);
     };
-
     if (servicesDropdown) {
       document.addEventListener("keydown", handleKeyDown);
       return () => document.removeEventListener("keydown", handleKeyDown);
@@ -77,26 +73,77 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <div key={link.label} className="relative group" ref={link.isDropdown ? dropdownRef : null}>
+              <div
+                key={link.label}
+                className="relative group"
+                ref={link.isDropdown ? servicesRef : null}
+              >
                 {link.isDropdown ? (
-                  <button
-                    onMouseEnter={() => setServicesDropdown(true)}
-                    onMouseLeave={() => setServicesDropdown(false)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setServicesDropdown(!servicesDropdown);
-                      }
-                    }}
-                    aria-haspopup="true"
-                    aria-expanded={servicesDropdown}
-                    aria-label="Services dropdown menu"
-                    className="relative px-3 py-2 text-sm font-semibold text-charcoal hover:text-sage-600 transition-colors duration-200 rounded-lg hover:bg-sage-100/60 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2"
-                  >
-                    {link.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesDropdown ? 'rotate-180' : ''}`} />
-                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-sage-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
-                  </button>
+                  <>
+                    <button
+                      onMouseEnter={() => setServicesDropdown(true)}
+                      onMouseLeave={() => setServicesDropdown(false)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setServicesDropdown(!servicesDropdown);
+                        }
+                      }}
+                      aria-haspopup="true"
+                      aria-expanded={servicesDropdown}
+                      aria-label="Services dropdown menu"
+                      className="relative px-3 py-2 text-sm font-semibold text-charcoal hover:text-sage-600 transition-colors duration-200 rounded-lg hover:bg-sage-100/60 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:ring-offset-2"
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-300 ${
+                          servicesDropdown ? "rotate-180" : ""
+                        }`}
+                      />
+                      <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-sage-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
+                    </button>
+
+                    {/* Services Dropdown */}
+                    <AnimatePresence>
+                      {servicesDropdown && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          onMouseEnter={() => setServicesDropdown(true)}
+                          onMouseLeave={() => setServicesDropdown(false)}
+                          role="menu"
+                          className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-sage-100 p-3 z-50"
+                        >
+                          <div className="space-y-1.5 max-h-96 overflow-y-auto">
+                            {services.map((item) => (
+                              <a
+                                key={item.slug}
+                                href={`/services/${item.slug}`}
+                                onClick={() => setServicesDropdown(false)}
+                                role="menuitem"
+                                className="group flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-sage-100/50 transition-all duration-300 focus:outline-none focus:bg-sage-100/50"
+                              >
+                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${item.bg}`}>
+                                  <item.icon className={`w-4 h-4 ${item.color}`} />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-sm font-semibold text-[#2d3748] group-hover:text-sage-600 transition-colors">
+                                    {item.title}
+                                  </p>
+                                  <p className="text-xs text-gray-500 line-clamp-2 mt-0.5">
+                                    {item.description}
+                                  </p>
+                                </div>
+                                <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-sage-600 group-hover:translate-x-1 transition-all duration-200 shrink-0 mt-0.5" />
+                              </a>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
                 ) : (
                   <a
                     href={link.href}
@@ -105,49 +152,6 @@ export default function Navbar() {
                     {link.label}
                     <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-sage-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
                   </a>
-                )}
-
-                {/* Desktop Services Dropdown */}
-                {link.isDropdown && (
-                  <AnimatePresence>
-                    {servicesDropdown && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        onMouseEnter={() => setServicesDropdown(true)}
-                        onMouseLeave={() => setServicesDropdown(false)}
-                        role="menu"
-                        className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-sage-100 p-3 z-50"
-                      >
-                        <div className="space-y-1.5 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-sage-200 scrollbar-track-transparent">
-                          {services.map((svc) => (
-                            <a
-                              key={svc.slug}
-                              href={`/services/${svc.slug}`}
-                              onClick={() => setServicesDropdown(false)}
-                              role="menuitem"
-                              className="group flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-sage-100/50 transition-all duration-300 focus:outline-none focus:bg-sage-100/50 focus:ring-2 focus:ring-sage-600"
-                            >
-                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${svc.bg}`}>
-                                <svc.icon className={`w-4 h-4 ${svc.color}`} />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-sm font-semibold text-[#2d3748] group-hover:text-sage-600 transition-colors">
-                                  {svc.title}
-                                </p>
-                                <p className="text-xs text-gray-500 line-clamp-2 mt-0.5">
-                                  {svc.description}
-                                </p>
-                              </div>
-                              <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-sage-600 group-hover:translate-x-1 transition-all duration-200 shrink-0 mt-0.5" />
-                            </a>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 )}
               </div>
             ))}
@@ -196,19 +200,18 @@ export default function Navbar() {
                         initial={{ opacity: 0, x: -16 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            setMobileServicesOpen(!mobileServicesOpen);
-                          }
-                        }}
                         aria-haspopup="true"
                         aria-expanded={mobileServicesOpen}
                         className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-charcoal hover:text-sage-600 hover:bg-sage-100/60 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sage-600"
                       >
                         {link.label}
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform duration-300 ${
+                            mobileServicesOpen ? "rotate-180" : ""
+                          }`}
+                        />
                       </motion.button>
+
                       <AnimatePresence>
                         {mobileServicesOpen && (
                           <motion.div
@@ -219,23 +222,23 @@ export default function Navbar() {
                             role="menu"
                             className="pl-4 space-y-1 mt-1"
                           >
-                            {services.map((svc) => (
+                            {services.map((item) => (
                               <a
-                                key={svc.slug}
-                                href={`/services/${svc.slug}`}
+                                key={item.slug}
+                                href={`/services/${item.slug}`}
                                 onClick={() => {
                                   setMobileOpen(false);
                                   setMobileServicesOpen(false);
                                 }}
                                 role="menuitem"
-                                className="flex items-start gap-3 px-4 py-2.5 text-xs font-semibold text-[#2d3748] hover:text-sage-600 hover:bg-sage-100/30 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sage-600"
+                                className="flex items-start gap-3 px-4 py-2.5 text-xs font-semibold text-[#2d3748] hover:text-sage-600 hover:bg-sage-100/30 rounded-lg transition-colors duration-200"
                               >
-                                <div className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${svc.bg}`}>
-                                  <svc.icon className={`w-3 h-3 ${svc.color}`} />
+                                <div className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${item.bg}`}>
+                                  <item.icon className={`w-3 h-3 ${item.color}`} />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <p className="font-semibold">{svc.title}</p>
-                                  <p className="text-gray-500 line-clamp-1">{svc.description}</p>
+                                  <p className="font-semibold">{item.title}</p>
+                                  <p className="text-gray-500 line-clamp-1">{item.description}</p>
                                 </div>
                               </a>
                             ))}
@@ -257,6 +260,7 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
+
               <motion.a
                 href="/#contact"
                 onClick={() => setMobileOpen(false)}

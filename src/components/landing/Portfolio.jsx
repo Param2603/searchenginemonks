@@ -1,41 +1,28 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-
-const projects = [
-  { title: "FreshBite E-Commerce Redesign", category: "Website Design & SEO", description: "Complete e-commerce overhaul resulting in 180% increase in online sales and 45% improvement in organic traffic within 6 months.", tags: ["Shopify", "SEO", "UI/UX"], image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80", stat: "+180% Sales" },
-  { title: "UrbanNest Real Estate Platform", category: "Web Development & Branding", description: "Modern property listing platform with AI-powered search, generating 3x more qualified leads for a Toronto-based real estate firm.", tags: ["Next.js", "AI", "Branding"], image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80", stat: "3x Leads" },
-  { title: "HealthFirst Clinic Marketing", category: "Google Ads & SEO", description: "Comprehensive digital marketing strategy for a healthcare startup, achieving top-3 Google rankings for 15+ high-value keywords.", tags: ["Google Ads", "Local SEO", "Content"], image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80", stat: "Top-3 Ranking" },
-  { title: "StyleHub Fashion Brand", category: "Social Media & Meta Ads", description: "Full-funnel social media campaign across Instagram and Facebook, driving 250% increase in brand awareness and 120% ROAS.", tags: ["Meta Ads", "Content", "Strategy"], image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80", stat: "120% ROAS" },
-  { title: "TechFlow SaaS Landing Page", category: "Website Design & Content", description: "High-converting landing page for a B2B SaaS startup, improving trial signups by 220% with A/B tested copy and design.", tags: ["React", "Copywriting", "CRO"], image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80", stat: "+220% Signups" },
-  { title: "GreenLeaf Cannabis Retail", category: "Full Digital Marketing", description: "End-to-end digital presence for a Canadian cannabis retailer — from branding to Google Ads, driving 400% revenue growth in one year.", tags: ["Branding", "Ads", "SEO"], image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80", stat: "+400% Revenue" },
-];
+import { portfolio as projects } from "@/constants/portfolioData";
 
 function ParallaxCard({ project, index }) {
   const ref = useRef(null);
-  
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Smooth out the motion
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
-  // Rotate based on mouse position
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
 
   const handleMouseMove = (e) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
     x.set(xPct);
     y.set(yPct);
   };
@@ -53,67 +40,63 @@ function ParallaxCard({ project, index }) {
         onMouseLeave={handleMouseLeave}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.1, duration: 0.6 }}
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-        }}
-        className="h-full cursor-pointer"
+        viewport={{ once: true, margin: "-50px" }}
+        whileHover={{ y: -8, scale: 1.02 }}
+        transition={{ delay: index * 0.07, duration: 0.5, ease: "easeOut" }}
+        style={{ rotateX, rotateY }}
+        className="h-full"
       >
-        <div
-          style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
-          className="group bg-[#f4f7f5] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-[#d1fae5] hover:border-[#6ee7b7] transition-all duration-300 h-full flex flex-col relative"
+        <Link
+          href={`/portfolio/${project.slug}`}
+          className={`group relative flex flex-col h-full bg-white rounded-4xl overflow-hidden shadow-xl shadow-gray-900/5 border border-transparent ${project.borderHover} transition-all duration-500 z-10`}
         >
+          {/* Decorative blob expanding on hover */}
+          <div
+            className={`absolute -right-6 -top-6 w-32 h-32 rounded-full ${project.bg} opacity-50 group-hover:opacity-100 group-hover:scale-[8] transition-all duration-700 ease-out -z-10`}
+          />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] -z-10" />
+
           {/* Card Visual Header */}
-          <div 
-            className="relative h-56 bg-cover bg-center p-6 flex flex-col justify-between overflow-hidden"
-            style={{ backgroundImage: `url(${project.image})`, transformStyle: "preserve-3d" }}
+          <div
+            className="relative h-56 bg-cover bg-center p-6 flex flex-col justify-between overflow-hidden rounded-t-4xl m-2"
+            style={{ backgroundImage: `url(${project.image})` }}
           >
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
-            
-            <motion.span 
-              style={{ transform: "translateZ(50px)" }}
-              className="self-start px-3 py-1 bg-[#f4f7f5]/95 text-[#059669] text-xs font-bold rounded-full z-10 shadow-sm"
-            >
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 rounded-t-3xl" />
+
+            <span className="self-start px-3 py-1 bg-white/95 text-sage-700 text-xs font-bold rounded-full z-10 shadow-sm backdrop-blur-sm">
               {project.category}
-            </motion.span>
-            
-            <div className="flex items-end justify-between z-10" style={{ transformStyle: "preserve-3d" }}>
-              <motion.div 
-                style={{ transform: "translateZ(60px)" }} 
-                className="self-end bg-[#f4f7f5] rounded-xl shadow-lg px-4 py-2"
-              >
-                <p className="text-base font-extrabold text-[#2d3748]">{project.stat}</p>
-              </motion.div>
-              <motion.div 
-                style={{ transform: "translateZ(40px)" }} 
-                className="w-8 h-8 bg-[#f4f7f5]/95 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md"
-              >
-                <ArrowUpRight className="w-4 h-4 text-[#059669]" />
-              </motion.div>
+            </span>
+
+            <div className="flex items-end justify-between z-10">
+              <div className="self-end bg-white rounded-xl shadow-lg px-4 py-2">
+                <p className="text-base font-extrabold text-[#1e293b]">{project.stat}</p>
+              </div>
+              <div className="w-10 h-10 bg-white/95 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md group-hover:scale-110">
+                <ArrowUpRight className="w-5 h-5 text-sage-600 group-hover:rotate-12 transition-transform" />
+              </div>
             </div>
           </div>
 
           {/* Card Body */}
-          <motion.div 
-            style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }} 
-            className="p-6 flex-1 flex flex-col z-10 relative bg-[#f4f7f5]"
-          >
-            <h3 className="text-base font-bold text-[#2d3748] mb-2 group-hover:text-[#059669] transition-colors duration-200">
+          <div className="p-6 flex-1 flex flex-col z-10 relative bg-transparent">
+            <h3 className="text-xl font-bold text-[#1e293b] mb-3 group-hover:text-sage-700 transition-colors duration-300">
               {project.title}
             </h3>
-            <p className="text-sm text-[#4a5568] leading-relaxed mb-4 flex-1">{project.description}</p>
+            <p className="text-[15px] text-[#475569] leading-relaxed mb-6 flex-1">
+              {project.description}
+            </p>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 bg-[#d1fae5] text-[#047857] text-xs font-semibold rounded-md">
+                <span
+                  key={tag}
+                  className={`px-3 py-1 ${project.bg} text-gray-700 text-xs font-semibold rounded-md shadow-sm`}
+                >
                   {tag}
                 </span>
               ))}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </Link>
       </motion.div>
     </div>
   );
@@ -121,30 +104,47 @@ function ParallaxCard({ project, index }) {
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-20 sm:py-28 bg-[#e6f2ec]" aria-labelledby="portfolio-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="portfolio"
+      className="py-24 sm:py-32 bg-white relative overflow-hidden"
+      aria-labelledby="portfolio-heading"
+    >
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-sage-200 to-transparent opacity-50" />
+      <div className="absolute -left-40 top-40 w-96 h-96 bg-sage-100 rounded-full blur-3xl opacity-30" />
+      <div className="absolute -right-40 bottom-20 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="inline-block px-4 py-1.5 bg-[#d1fae5] text-[#047857] text-sm font-bold rounded-full mb-4 uppercase tracking-wide">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-sage-50 text-sage-600 text-sm font-bold rounded-full mb-6 tracking-widest uppercase shadow-sm border border-sage-100">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Our Portfolio
           </span>
-          <h2 id="portfolio-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d3748] tracking-tight mb-4">
+          <h2
+            id="portfolio-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e293b] tracking-tight mb-6 leading-tight"
+          >
             Real Results for{" "}
-            <span className="text-[#059669]">Real Businesses</span>
+            <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-sage-600 to-[#10b981]">
+              Real Businesses
+            </span>
           </h2>
-          <p className="text-lg text-[#4a5568] leading-relaxed">
-            Explore our latest projects and see how we've helped businesses across Canada achieve remarkable digital growth.
+          <p className="text-lg sm:text-xl text-[#475569] leading-relaxed">
+            Explore our latest projects and see how we've helped businesses across Canada
+            achieve remarkable digital growth with beautiful design and strategic marketing.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, i) => (
-            <ParallaxCard key={project.title} project={project} index={i} />
+            <ParallaxCard key={project.slug} project={project} index={i} />
           ))}
         </div>
       </div>

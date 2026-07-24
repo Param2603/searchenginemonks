@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default function ServiceFAQ({ service }) {
+export default function ServiceFAQ({ service, backLabel = "Back to All Services", backHref = "/#services" }) {
   const { theme, faqs } = service;
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -78,11 +78,11 @@ export default function ServiceFAQ({ service }) {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <Link
-            href="/#services"
+            href={backHref}
             className={`group inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-white border-2 border-transparent hover:${theme.borderHover} text-[#4a5568] hover:${theme.heading}`}
           >
             <ArrowLeft className={`w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1 ${theme.iconText}`} />
-            Back to All Services
+            {backLabel}
           </Link>
         </motion.div>
       </div>

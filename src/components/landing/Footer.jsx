@@ -13,7 +13,7 @@ const footerLinks = {
     { label: "Content Creation", href: "/services/content-creation" },
   ],
   company: [
-    { label: "About Us", href: "/#" },
+    { label: "About Us", href: "/about" },
     { label: "Our Team", href: "/#" },
     { label: "Careers", href: "#" },
     { label: "Blog", href: "#" },
