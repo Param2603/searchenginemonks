@@ -22,34 +22,34 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 sm:py-32 bg-sage-50 relative overflow-hidden" aria-labelledby="services-heading">
+    <section id="services" className="py-24 sm:py-32 bg-sage-50 relative overflow-hidden w-full" aria-labelledby="services-heading">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-emerald-200 to-transparent opacity-50" />
-      <div className="absolute -left-40 top-40 w-96 h-96 bg-emerald-100 rounded-full blur-3xl opacity-30" />
-      <div className="absolute -right-40 bottom-20 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50" />
+      <div className="absolute left-0 top-40 w-64 h-64 sm:w-96 sm:h-96 bg-emerald-100 rounded-full blur-3xl opacity-30 -translate-x-1/2" />
+      <div className="absolute right-0 bottom-20 w-64 h-64 sm:w-96 sm:h-96 bg-emerald-50 rounded-full blur-3xl opacity-50 translate-x-1/2" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-sage-600 text-sm font-bold rounded-full mb-6 tracking-widest uppercase shadow-sm border border-emerald-100">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Our Services
           </span>
-          <h2 id="services-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e293b] tracking-tight mb-6 leading-tight">
+          <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e293b] tracking-tight mb-4 sm:mb-6 leading-tight">
             Everything You Need to <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-sage-600 to-[#10b981]">Dominate Online</span>
           </h2>
-          <p className="text-lg sm:text-xl text-[#475569] leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-[#475569] leading-relaxed">
             From custom website design to AI-powered automation, we provide end-to-end digital solutions that drive real, measurable business growth.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -63,25 +63,25 @@ export default function Services() {
             >
               <Link
                 href={service.href}
-                className={`group relative flex flex-col h-full bg-white rounded-4xl p-8 shadow-xl shadow-gray-900/5 border border-transparent ${service.borderHover} transition-all duration-500 overflow-hidden z-10`}
+                className={`group relative flex flex-col h-full bg-white rounded-4xl p-5 sm:p-6 lg:p-8 shadow-xl shadow-gray-900/5 border border-transparent ${service.borderHover} transition-all duration-500 overflow-hidden z-10`}
               >
                 {/* Decorative blob expanding on hover */}
                 <div className={`absolute -right-6 -top-6 w-32 h-32 rounded-full ${service.bg} opacity-50 group-hover:opacity-100 group-hover:scale-[6] transition-all duration-700 ease-out -z-10`} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] -z-10" />
 
                 <motion.div
-                  className={`relative w-16 h-16 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${service.bg} rounded-2xl flex items-center justify-center mb-6 shadow-sm overflow-hidden`}
+                  className={`relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${service.bg} rounded-2xl flex items-center justify-center mb-4 sm:mb-5 lg:mb-6 shadow-sm overflow-hidden flex-shrink-0`}
                   whileHover={{ rotate: [0, -10, 10, -5, 0] }}
                   transition={{ duration: 0.6 }}
                 >
-                  <service.icon className={`relative w-8 h-8 sm:w-7 sm:h-7 lg:w-8 lg:h-8 ${service.color}`} />
+                  <service.icon className={`relative w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 ${service.color}`} />
                 </motion.div>
                 
-                <h3 className={`text-xl sm:text-lg lg:text-xl font-bold text-[#1e293b] mb-3 ${service.hoverText} transition-colors duration-300`}>
+                <h3 className={`text-base sm:text-lg lg:text-xl font-bold text-[#1e293b] mb-2 sm:mb-3 ${service.hoverText} transition-colors duration-300`}>
                   {service.title}
                 </h3>
                 
-                <p className="text-[15px] text-[#475569] leading-relaxed mb-8 grow">
+                <p className="text-sm sm:text-[15px] text-[#475569] leading-relaxed mb-6 sm:mb-8 grow">
                   {service.description}
                 </p>
                 

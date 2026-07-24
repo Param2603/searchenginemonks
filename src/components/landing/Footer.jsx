@@ -14,16 +14,16 @@ const footerLinks = {
   ],
   company: [
     { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/#" },
-    { label: "Careers", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Case Studies", href: "#portfolio" },
+    { label: "Our Team", href: "/our-team" },
+    { label: "Careers", href: "/careers" },
+    { label: "Blog", href: "/blog" },
+    { label: "Case Studies", href: "/portfolio" },
   ],
   support: [
-    { label: "Contact Us", href: "#contact" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Contact Us", href: "/#contact" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
   ],
 };
 
