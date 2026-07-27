@@ -39,9 +39,9 @@ const faqs = [
   },
 ];
 
-export default function FAQAccordion({ 
-  customFaqs, 
-  title = "Frequently Asked", 
+export default function FAQAccordion({
+  customFaqs,
+  title = "Frequently Asked",
   highlight = "Questions",
   subtitle = "Everything you need to know about working with Search Engine Monks. Can't find your answer?"
 }) {
@@ -85,11 +85,10 @@ export default function FAQAccordion({
                 <motion.button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   whileHover={{ backgroundColor: isOpen ? "rgba(167,243,208,0.6)" : "rgba(209,250,229,0.7)" }}
-                  className={`w-full flex items-center justify-between gap-4 px-6 py-5 rounded-2xl text-left transition-all duration-300 border ${
-                    isOpen
+                  className={`w-full flex items-center justify-between gap-4 px-6 py-5 rounded-2xl text-left transition-all duration-300 border ${isOpen
                       ? "bg-[#a7f3d0]/60 border-[#6ee7b7] shadow-md"
                       : "bg-[#f4f7f5] border-[#d1fae5] hover:border-[#6ee7b7] shadow-sm"
-                  }`}
+                    }`}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${i}`}
                   id={`faq-question-${i}`}

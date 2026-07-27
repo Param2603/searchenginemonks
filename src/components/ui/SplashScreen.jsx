@@ -22,9 +22,8 @@ export default function SplashScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0A192F]/85 backdrop-blur-lg transition-opacity duration-500 ${
-        fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0A192F]/85 backdrop-blur-lg transition-opacity duration-500 ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
     >
       <div className="relative flex flex-col items-center justify-center">
         {/* Glow effect behind logo */}

@@ -76,15 +76,15 @@ export default function Services() {
                 >
                   <service.icon className={`relative w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 ${service.color}`} />
                 </motion.div>
-                
+
                 <h3 className={`text-base sm:text-lg lg:text-xl font-bold text-[#1e293b] mb-2 sm:mb-3 ${service.hoverText} transition-colors duration-300`}>
                   {service.title}
                 </h3>
-                
+
                 <p className="text-sm sm:text-[15px] text-[#475569] leading-relaxed mb-6 sm:mb-8 grow">
                   {service.description}
                 </p>
-                
+
                 <div className={`mt-auto flex items-center gap-2 text-sm font-bold ${service.exploreText} transition-colors duration-300`}>
                   <span>Explore Service</span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>

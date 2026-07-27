@@ -178,8 +178,14 @@
 }
 
 @layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
   .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+
+  /* ─── Float ─── */
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
@@ -188,7 +194,23 @@
     50% { transform: translateY(-16px); }
   }
 
-  /* Subtle shine sweep — add to any button/card for a premium hover effect */
+  /* ─── Infinite Marquee ─── */
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee-reverse 32s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* ─── Shimmer / Shine Sweep ─── */
   .shine-hover {
     position: relative;
     overflow: hidden;
@@ -200,39 +222,147 @@
     left: -75%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
     transform: skewX(-20deg);
-    transition: left 0.75s ease;
+    transition: left 0.7s ease;
   }
-  .shine-hover:hover::after {
-    left: 125%;
-  }
+  .shine-hover:hover::after { left: 125%; }
 
-  /* Soft breathing glow for badges / highlighted elements */
+  /* ─── Glow Pulse ─── */
   .animate-glow-pulse {
     animation: glow-pulse 2.5s ease-in-out infinite;
   }
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.35); }
-    50% { box-shadow: 0 0 0 8px rgba(5, 150, 105, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.35); }
+    50%       { box-shadow: 0 0 0 10px rgba(5,150,105,0); }
   }
 
-  /* Animated gradient text for eye-catching headings */
+  /* ─── Gradient Text Animation ─── */
   .animate-gradient-text {
-    background-size: 200% auto;
-    animation: gradient-shift 4s ease infinite;
+    background-size: 250% auto;
+    animation: gradient-shift 5s ease infinite;
   }
   @keyframes gradient-shift {
-    0% { background-position: 0% center; }
-    50% { background-position: 100% center; }
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
     100% { background-position: 0% center; }
   }
 
-  /* Gentle image zoom on hover — pair with overflow-hidden on the parent */
+  /* ─── Image Zoom on Hover ─── */
   .img-zoom {
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
   }
-  .img-zoom:hover {
-    transform: scale(1.08);
+  .img-zoom:hover { transform: scale(1.08); }
+
+  /* ─── Blob Morph ─── */
+  .animate-blob {
+    animation: blob-morph 8s ease-in-out infinite;
+  }
+  .animate-blob-delay {
+    animation: blob-morph 10s ease-in-out 2s infinite;
+  }
+  @keyframes blob-morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1) rotate(0deg); }
+    25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.05) rotate(3deg); }
+    50%       { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; transform: scale(0.97) rotate(-2deg); }
+    75%       { border-radius: 60% 40% 60% 30% / 60% 30% 50% 60%; transform: scale(1.03) rotate(4deg); }
+  }
+
+  /* ─── Particle Float ─── */
+  .animate-particle-1 { animation: particle-float 6s  ease-in-out infinite; }
+  .animate-particle-2 { animation: particle-float 8s  ease-in-out 1s infinite; }
+  .animate-particle-3 { animation: particle-float 7s  ease-in-out 2s infinite; }
+  .animate-particle-4 { animation: particle-float 9s  ease-in-out 0.5s infinite; }
+  .animate-particle-5 { animation: particle-float 5s  ease-in-out 1.5s infinite; }
+  .animate-particle-6 { animation: particle-float 10s ease-in-out 3s infinite; }
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+    33%       { transform: translateY(-30px) translateX(15px) scale(1.1); opacity: 1; }
+    66%       { transform: translateY(15px) translateX(-20px) scale(0.9); opacity: 0.4; }
+  }
+
+  /* ─── Clip-Path Reveal (for section headings) ─── */
+  .clip-reveal {
+    clip-path: inset(0 100% 0 0);
+    animation: clip-reveal-in 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes clip-reveal-in {
+    to { clip-path: inset(0 0% 0 0); }
+  }
+
+  /* ─── Stagger fade-up (CSS fallback) ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fade-up-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes fade-up-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── Spin (custom speeds) ─── */
+  .animate-spin-slow  { animation: spin 12s linear infinite; }
+  .animate-spin-xslow { animation: spin 30s linear infinite; }
+  .animate-spin-rev   { animation: spin-reverse 20s linear infinite; }
+  @keyframes spin         { to { transform: rotate(360deg); } }
+  @keyframes spin-reverse { to { transform: rotate(-360deg); } }
+
+  /* ─── Typewriter cursor ─── */
+  .animate-cursor {
+    animation: blink-cursor 0.8s step-end infinite;
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ─── Carousel slide ─── */
+  @keyframes slide-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+  @keyframes slide-right {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* ─── Ripple (for button clicks) ─── */
+  .ripple-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .ripple-btn:active::after { opacity: 1; }
+
+  /* ─── Underline grow (for links) ─── */
+  .underline-grow {
+    position: relative;
+  }
+  .underline-grow::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  .underline-grow:hover::after { width: 100%; }
+
+  /* ─── Card tilt (set via JS, but CSS base) ─── */
+  .card-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+  }
+  .card-tilt-inner {
+    transform: translateZ(20px);
   }
 }

@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono, Quicksand } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import SplashScreen from "@/components/ui/SplashScreen";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
@@ -153,7 +152,6 @@ export default function RootLayout({ children }) {
         <SplashScreen />
         <ScrollProgressBar />
         {children}
-        <Toaster />
         <SonnerToaster position="bottom-right" richColors />
       </body>
     </html>
